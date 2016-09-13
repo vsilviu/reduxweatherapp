@@ -14,14 +14,18 @@ export default class SearchBar extends Component {
     }
 
     onInputChange(event) {
+        //if we want to use 'this', bind!
         console.log(event.target.value);
-        //when directly called, this has problems!
         this.setState({term: event.target.value});
+    }
+
+    onFormSubmit(event) {
+        event.preventDefault();
     }
 
     render() {
         return (
-            <form className="input-group">
+            <form onSubmit={this.onFormSubmit} className="input-group">
                 <input
                     placeholder="Get a 5 day forecast..."
                     className="form-control"
